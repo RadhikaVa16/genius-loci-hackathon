@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Genius Itinerary</title>
+</head>
+<body>
+    <h1>Your Genius Loci Itinerary</h1>
+    
+    <div style="border: 2px solid #007BFF; padding: 15px; margin-bottom: 20px;">
+        <p><strong>Weather Alert:</strong> Rain expected this afternoon. Click below to adapt your plan!</p>
+    </div>
+
+    <pre>{{ itinerary }}</pre>
+
+    <form action="/adapt" method="post">
+        <input type="hidden" name="itinerary" value="{{ itinerary }}">
+        <button type="submit">Adapt My Itinerary</button>
+    </form>
+</body>
+</html>
