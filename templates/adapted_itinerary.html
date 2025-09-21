@@ -8,7 +8,17 @@
     <h1>Your Updated Itinerary</h1>
     
     <div style="border: 2px solid #28A745; padding: 15px; margin-bottom: 20px;">
-        <p>? **Genius Loci** automatically adjusted your plan to an indoor activity due to the weather forecast!</p>
+        <p>✅ 
+        {% set messages = {
+            "rain": "Our AI has automatically adjusted your plan to an indoor activity due to the weather forecast!",
+            "train_delay": "Our AI has re-routed your plan to account for your train delay!",
+            "luggage_lost": "Our AI has adapted your plan to help you recover from your lost luggage!",
+            "sick": "Our AI has adapted your plan to give you time to rest and recover!",
+            "spontaneous": "Our AI has re-planned your day based on your spontaneous discovery!",
+            "other": "Our AI has adapted your plan based on your change of plans!"
+        } %}
+        {{ messages[event_type] }}
+        </p>
     </div>
 
     <pre>{{ adapted_itinerary }}</pre>

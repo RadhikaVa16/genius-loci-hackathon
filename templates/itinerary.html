@@ -7,14 +7,28 @@
 <body>
     <h1>Your Genius Loci Itinerary</h1>
     
-    <div style="border: 2px solid #007BFF; padding: 15px; margin-bottom: 20px;">
-        <p><strong>Weather Alert:</strong> Rain expected this afternoon. Click below to adapt your plan!</p>
-    </div>
-
     <pre>{{ itinerary }}</pre>
 
     <form action="/adapt" method="post">
         <input type="hidden" name="itinerary" value="{{ itinerary }}">
+
+        <label for="event_type">Change due to:</label>
+        <select name="event_type" id="event_type">
+            <option value="rain">Rain or Bad Weather</option>
+            <option value="train_delay">Train or Bus is Delayed</option>
+            <option value="luggage_lost">Lost Luggage</option>
+            <option value="sick">Feeling Sick or Tired</option>
+            <option value="spontaneous">Found something cool/spontaneous discovery</option>
+            <option value="other">Other Change of Plans</option>
+        </select>
+        
+        <label for="day_to_adapt">On which day?:</label>
+        <select name="day_to_adapt" id="day_to_adapt">
+            {% for day in range(1, duration|int + 1) %}
+            <option value="{{ day }}">Day {{ day }}</option>
+            {% endfor %}
+        </select>
+        
         <button type="submit">Adapt My Itinerary</button>
     </form>
 </body>
